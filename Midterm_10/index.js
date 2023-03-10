@@ -3,7 +3,7 @@ fetch("./data.json")
         .then(games => uploadGames(games));
 
 function uploadGames(data) {
-    for (var i = 1; i <= data.zeldaGames.length; ++i) {
+    for (var i = 1; i <= 6; ++i) {
         let textContainer = document.getElementById("text"+i);
         let imageContainer = document.getElementById("image"+i);
 

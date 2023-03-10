@@ -1,0 +1,34 @@
+{
+    "zeldaGames": [
+        {
+            "name": "Legend of Zelda Ocarina of Time",
+            "info": "Coming out in 1998, this is considered to be not just one of the best zelda games, but one of the best games of all times by many gamers.",
+            "image": "./images/Ocarina_of_Time.jpg"
+        },
+        {
+            "name": "Legend of Zelda Majoras Mask",
+            "info": "Coming out in 2000, this game took a darker spin on the Legend of Zelda franchise. It came out very shortly after its predecessor.",
+            "image": "./images/Majoras_Mask.jpg"
+        },
+        {
+            "name": "Legend of Zelda Wind Waker",
+            "info": "Coming out in 2002, you were put into the open seas, it attempted to grasp the feeling of open worldness with its limited technology, with a recognizable art style.",
+            "image": "./images/Wind_Waker.jpg"
+        },
+        {
+            "name": "Legend of Zelda Twilight Princess",
+            "info": "Coming out in 2006, this game took more serious spin back on the series that the fans were craving, this game was characerized by the fact Link became a wolf.",
+            "image": "./images/Twilight_Princess.jpg"
+        },
+        {
+            "name": "Legend of Zelda Skyward Sword",
+            "info": "Coming out in 2011, this game was the first game to be very reliant on the motion controls, despite it having a calming atmosphere, there are several creepy parts in this game.",
+            "image": "./images/Skyward_Sword.jpg"
+        },
+        {
+            "name": "Legend of Zelda Breath of the Wild",
+            "info": "Coming out in 2017, it is the most recent addition in the Legend of Zelda series, it delivered the first open world experience and broke several series conventions.",
+            "image": "./images/Breath_of_the_Wild.jpg"
+        }
+    ]
+}

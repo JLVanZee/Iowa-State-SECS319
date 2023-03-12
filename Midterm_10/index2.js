@@ -20,12 +20,7 @@ function uploadGames(data) {
 
         let imgDiv = document.createElement("div");
         imgDiv.innerHTML = `
-            <style>
-                img {
-                    width: 100%;
-                    height: 225;
-                }
-            </style>
+            
             <img src=${img} alt="game picture">
             `
         imageContainer.appendChild(imgDiv);

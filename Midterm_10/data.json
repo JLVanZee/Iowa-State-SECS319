@@ -30,5 +30,38 @@
             "info": "Coming out in 2017, it is the most recent addition in the Legend of Zelda series, it delivered the first open world experience and broke several series conventions.",
             "image": "./images/Breath_of_the_Wild.jpg"
         }
+    ],
+
+    "pokemonGames": [
+        {
+            "name": "Pokemon Red",
+            "info": "The first installment of the pokemon series, released in 1996, introduced a new world with 151 pocket monsters to catch.",
+            "image": "./images/Pokemon_Red_Version.jpg"
+        },
+        {
+            "name": "Pokemon Silver",
+            "info": "The second generation of pokemon released in 1999 with a real day night cycle and 100 new pokemon were added to the cast. It also had more color than the previous games.",
+            "image": "./images/Pokemon_Silver_Version.jpg"
+        },
+        {
+            "name": "Pokemon Black",
+            "info": "The fifth generation of pokemon, released in 2010, is considered one of the best pokemon games of all time. It introduced moving models and an insane soundtrack.",
+            "image": "./images/Pokemon_Black_Version.jpg"
+        },
+        {
+            "name": "Pokemon X",
+            "info": "The sixth generation of pokemon released in 2013 and was the first 3d experience for pokemon fans. It introduced 72 new pokemon, a new type 'fairy', mega evolution, new encounter types like horde.",
+            "image": "./images/Pokemon_X_Version.jpg"
+        },
+        {
+            "name": "Pokemon Sword",
+            "info": "The eighth generation of pokemon released in 2019 was supposed to be the first truly open world pokemon game. Pokemon is generally linear because of areas being unaccesible without beating gym leaders, but this game changed that. It did not truly achieve full open world though.",
+            "image": "./images/Pokemon_Sword_Version.jpg"
+        },
+        {
+            "name": "Pokemon Violet",
+            "info": "The ninth and most recent generation of pokemon was released in 2022. 103 new pokemon were added bringing the total count to 1008 overall. This game was more successful at implementing the open world idea and introduced true coop experiences to the pokemon series.",
+            "image": "./images/Pokemon_Violet_Version.jpg"
+        }
     ]
 }

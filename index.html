@@ -23,22 +23,23 @@
                 <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent">  -->
                 
                         <!-- where the search bar will go -->
-                <div class="container-fluid collapse show mw-100" id="store">
-                    <form class="form-inline">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
+                <div class="container-fluid">
+                    <div class="collapse show mw-100" id="store">
+                        <form class="form-inline">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
+                            
+                        </form>
+                        <button id="checkoutbtn" class="btn btn-primary float-right" type="button" onclick="goToCheckout()">Checkout</button>
                         
-                    </form>
-                    <button id="checkout" class="btn btn-primary" type="button" onclick="goToCheckout()">Checkout</button>
-                    
-                </div>
+                    </div>
 
-                <div class="collapse" id="checkout">
-                    
+                    <div class="collapse mw-100" id="checkout">
+                        <button id="returnbtn" class="btn btn-secondary my-2 my-sm-0" type="button" onclick="goToStore()" >Return</button>
+                    </div>
                 </div>
-                
             <!-- </div> -->
-            </div>
+            <!-- </div> -->
             
         </nav>
       </header>

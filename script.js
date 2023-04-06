@@ -6,3 +6,9 @@ function goToCheckout() {
     $('#checkout').collapse('show');
     console.log("went to checkout");
 }
+
+function goToStore() {
+    $('#checkout').collapse('hide');
+    $('#store').collapse('show');
+    console.log("went to store");
+}

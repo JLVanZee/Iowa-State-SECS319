@@ -1,6 +1,6 @@
-// fetch("./products.json")
-//         .then(response => response.json())
-//         .then(games => uploadBalls(games));
+fetch("./products.json")
+        .then(response => response.json())
+        .then(games => uploadBalls(games));
 
 
 function uploadBalls(data) {
@@ -16,7 +16,7 @@ function uploadBalls(data) {
         let div = document.createElement("div");
         div.innerHTML = `
             <p><b>${title}</b> <br>
-            <b>${price}</b><br><br>
+            <b>$${price}</b><br><br>
             ${desc}</p>
             `
         textContainer.appendChild(div);

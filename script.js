@@ -1,3 +1,4 @@
+
 // fetch("./products.json")
 //         .then(response => response.json())
 //         .then(games => uploadBalls(games));
@@ -33,4 +34,25 @@ function uploadBalls(data) {
             `
         imageContainer.appendChild(imgDiv);
     }
+}
+
+function goToCheckout() {
+    $('#store').collapse('hide');
+    $('#confirmation').collapse('hide');
+    $('#cart').collapse('show');
+    console.log("went to cart");
+}
+
+function goToStore() {
+    $('#cart').collapse('hide');
+    $('#confirmation').collapse('hide');
+    $('#store').collapse('show');
+    console.log("went to store");
+}
+
+function goToConfirmation() {
+    $('#cart').collapse('hide');
+    $('#store').collapse('hide');
+    $('#confirmation').collapse('show');
+    console.log("went to confirmation");
 }

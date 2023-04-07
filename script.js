@@ -3,12 +3,21 @@
 
 function goToCheckout() {
     $('#store').collapse('hide');
-    $('#checkout').collapse('show');
-    console.log("went to checkout");
+    $('#confirmation').collapse('hide');
+    $('#cart').collapse('show');
+    console.log("went to cart");
 }
 
 function goToStore() {
-    $('#checkout').collapse('hide');
+    $('#cart').collapse('hide');
+    $('#confirmation').collapse('hide');
     $('#store').collapse('show');
     console.log("went to store");
+}
+
+function goToConfirmation() {
+    $('#cart').collapse('hide');
+    $('#store').collapse('hide');
+    $('#confirmation').collapse('show');
+    console.log("went to confirmation");
 }

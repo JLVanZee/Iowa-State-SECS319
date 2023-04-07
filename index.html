@@ -16,48 +16,27 @@
     <div class="collapse show mw-100" id="store">
         <header>
             <nav class="navbar navbar-dark bg-dark justify-content-between">
-                <!-- <div class="container-fluid"> -->
-                    <!-- <a class="navbar-brand" href="#">Catalog</a> -->
-
-                    <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span></button> -->
-                    <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent">  -->
-                    
-                            <!-- where the search bar will go -->
                 <div class="container-fluid">
-                    
-                        <form class="form-inline">
-                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                            <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
-                            
-                        </form>
-                        <button id="checkoutbtn" class="btn btn-primary float-right" type="button" onclick="goToCheckout()">Checkout</button>
+                    <form class="form-inline">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
                         
-
-                    
+                    </form>
+                    <button id="checkoutbtn" class="btn btn-primary" type="button" onclick="goToCheckout()">Checkout</button>
                 </div>
-                <!-- </div> -->
-                <!-- </div> -->
-                
             </nav>
         </header>
 
     </div>
 
-    <div class="collapse mw-100" id="checkout">
+    <div class="collapse mw-100" id="cart">
         <header>
             <nav class="navbar navbar-dark bg-dark justify-content-between">
-                <!-- <div class="container-fluid"> -->
-                    <!-- <a class="navbar-brand" href="#">Catalog</a> -->
-
-                    <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span></button> -->
-                    <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent">  -->
-                    
-                            <!-- where the search bar will go -->
                 <div class="container-fluid">
-                    <button id="returnbtn" class="btn btn-secondary my-2 my-sm-0" type="button" onclick="goToStore()" >Return</button>
+                    <button id="returnFromCartbtn" class="btn btn-secondary my-2 my-sm-0" type="button" onclick="goToStore()" >Return</button>
                     <!-- Anything in the navbar -->
+                    <!-- button for testing confirmation (only placeholder) -->
+                    <button id="GoToConfirmbtn" class="btn btn-success my-2 my-sm-0" type="button" onclick="goToConfirmation()">Order</button>
                 </div>
             </nav>
         </header>
@@ -67,11 +46,16 @@
         </div>
     </div>
 
-    <div class="collapse mw-100" id="cart">
+    <div class="collapse mw-100" id="confirmation">
         <header>
-            <nav class="navbar navbar-dark bg-dark justify-content-between">
-                <div class="container-fluid">
-                    <!-- Anything in the navbar -->
+            <nav class="navbar navbar-dark bg-dark w-100">
+                <div class="container-fluid w-100">
+                    <div class="float-right">
+                        <button id="returnFromConfirmbtn" class="btn btn-secondary" type="button" onclick="goToStore()">Return To Store</button>
+                        <!-- Anything in the navbar -->
+                    </div>
+                    
+                    
                 </div>
             </nav>
         </header>

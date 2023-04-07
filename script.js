@@ -1,7 +1,7 @@
 
-// fetch("./products.json")
-//         .then(response => response.json())
-//         .then(games => uploadBalls(games));
+fetch("./products.json")
+        .then(response => response.json())
+        .then(games => uploadBalls(games));
 
 
 function uploadBalls(data) {

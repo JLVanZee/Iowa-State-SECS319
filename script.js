@@ -78,3 +78,10 @@ function removeFromCart(id) {
         console.log("Product: " + id + " could not be removed from cart.");
     }
 }
+
+function resetCart() {
+    for(let i = 0; i < cart.length; i++){
+        cart[i] = 0;
+    }
+    console.log("Cart has been reset.");
+}

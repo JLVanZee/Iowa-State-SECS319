@@ -55,3 +55,26 @@ function goToConfirmation() {
     $('#confirmation').collapse('show');
     console.log("went to confirmation");
 }
+
+// use productId to reference each part of the array
+// number of each product in cart
+let cart = [0,0,0,0,0,0];
+
+function addToCart(id) {
+    if(id < cart.length){
+        cart[id] += 1;
+        console.log("Product: " + id + " added to cart.");
+    } else {
+        console.log("Product: " + id + " could not be added to cart.");
+    }
+    
+}
+
+function removeFromCart(id) {
+    if(cart[id] > 0){
+        cart[id] -= 1;
+        console.log("Product: " + id + " removed from cart.");
+    } else {
+        console.log("Product: " + id + " could not be removed from cart.");
+    }
+}

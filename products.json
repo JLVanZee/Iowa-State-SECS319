@@ -4,42 +4,48 @@
             "title":"Football",
             "price":"19.95",
             "description":"The ball of America's favorite sport, great for pick up games or throwing around in the backyard.",
-            "image":"./Images/football.jpg"
+            "image":"./Images/football.jpg",
+            "productId":"0"
         },
 
         {
             "title":"Basketball",
             "price":"26.95",
             "description":"Bounce around this ball and take your shot at the hoop.",
-            "image":"./Images/basketball.jpg"
+            "image":"./Images/basketball.jpg",
+            "productId":"1"
         },
 
         {
             "title":"Baseball",
             "price":"3.33",
             "description":"The ball from America's favorite pastime, throw this ball with all your might and try strike out the batter.",
-            "image":"./Images/baseball.jpg"
+            "image":"./Images/baseball.jpg",
+            "productId":"2"
         },
 
         {
             "title":"Hockey Puck",
             "price":"6.99",
             "description":"Whack this thing with all your strength along the slippery ice, or a slick floor.",
-            "image":"./Images/hockeyPuck.jpg"
+            "image":"./Images/hockeyPuck.jpg",
+            "productId":"3"
         },
 
         {
             "title":"Soccer Ball",
             "price":"16.00",
             "description":"Kick this ball around, though due to store policy if you every touch it with your hands you will be forced to return it with no refund.",
-            "image":"./Images/soccer.jpg"
+            "image":"./Images/soccer.jpg",
+            "productId":"4"
         },
 
         {
             "title":"Playground Ball",
             "price":"9.99",
             "description":"A fun ball to bounce around or to play 4-square with, it will even last longer than a day before it deflates or gets warped.",
-            "image":"./Images/playgroundBall.jpg"
+            "image":"./Images/playgroundBall.jpg",
+            "productId":"5"
         }
     ]
 }

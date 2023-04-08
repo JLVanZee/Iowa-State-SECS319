@@ -85,3 +85,31 @@ function resetCart() {
     }
     console.log("Cart has been reset.");
 }
+
+function search() {
+    let productName = document.forms["search_form"]["search_input"];
+    let inputProductName = productName.value;
+    console.log("searching");
+
+    fetch("./products.json")
+        .then(response => response.json())
+        .then(balls => loadResults(balls));
+
+    function loadResults(data) {
+        for (var i = 1; i <= 6; ++i) {
+            if(inputProductName !== data.products[i-1].title){
+                
+                $('#card'+i).collapse('hide');
+                console.log("Hide");
+            } else {
+                $('#card'+i).collapse('show');
+                console.log("Show");
+            }
+            
+            
+    
+        }
+    }
+    
+    console.log("done searching");
+}

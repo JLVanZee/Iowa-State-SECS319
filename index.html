@@ -17,11 +17,10 @@
         <header>
             <nav class="navbar navbar-dark bg-dark justify-content-between">
                 <div class="container-fluid">
-                    <form class="form-inline">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <form class="form-inline" id="search_form">
+                        <input class="form-control mr-sm-2" id="search_input" placeholder="Search" >
                         <button class="btn btn-outline-info my-2 my-sm-0" type="button" onclick="search()">Search</button>
-                        
-                    </form>
+                    </form> 
                     <button id="checkoutbtn" class="btn btn-primary" type="button" onclick="goToCheckout()">Checkout</button>
                 </div>
             </nav>
@@ -45,95 +44,112 @@
               
                     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                       <div class="col">
-                        <div class="card shadow-sm">
+                        <div class="collapse show" id="card1">
+                            <div class="card shadow-sm">
               
                           
-                          <div id="image1"></div>
-                          <div class="card-body">        
-                            <p class="card-text"> <div id="text1"></div> </p>
-                          </div>
-                          <div class="btn-group">
-                            <button type="button" class="btn btn-sm btn-outline-success" onclick="addToCart(0)">Add to Cart</button>
-                            <button type="button" class="btn btn-sm btn-outline-danger" onclick="removeFromCart(0)">Remove from Cart</button>
-                            <button type="button" class="btn btn-primary">Total: </button>
-                          </div>
-              
+                                <div id="image1"></div>
+                                <div class="card-body">        
+                                    <p class="card-text"> <div id="text1"></div> </p>
+                                </div>
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-success" onclick="addToCart(0)">Add to Cart</button>
+                                    <button type="button" class="btn btn-sm btn-outline-danger" onclick="removeFromCart(0)">Remove from Cart</button>
+                                    <button type="button" class="btn btn-primary">Total: </button>
+                                </div>
+                    
+                            </div>
                         </div>
+                        
                       </div>
                       <div class="col">
-                        <div class="card shadow-sm">
-                          <!-- <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> -->
-                          <div id="image2"></div>
-              
-                          <div class="card-body">        
-                            <p class="card-text"> <div id="text2"></div> </p>
-                          </div>
-                          <div class="btn-group">
-                            <button type="button" class="btn btn-sm btn-outline-success" onclick="addToCart(1)">Add to Cart</button>
-                            <button type="button" class="btn btn-sm btn-outline-danger" onclick="removeFromCart(1)">Remove from Cart</button>
-                            <button type="button" class="btn btn-primary">Total: </button>
-                          </div>
+                        <div class="collapse show" id="card2">
+                            <div class="card shadow-sm">
+                                <!-- <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> -->
+                                <div id="image2"></div>
+                    
+                                <div class="card-body">        
+                                  <p class="card-text"> <div id="text2"></div> </p>
+                                </div>
+                                <div class="btn-group">
+                                  <button type="button" class="btn btn-sm btn-outline-success" onclick="addToCart(1)">Add to Cart</button>
+                                  <button type="button" class="btn btn-sm btn-outline-danger" onclick="removeFromCart(1)">Remove from Cart</button>
+                                  <button type="button" class="btn btn-primary">Total: </button>
+                                </div>
+                              </div>
                         </div>
                       </div>
+
                       <div class="col">
-                        <div class="card shadow-sm">
-                          <!-- <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> -->
-                          <div id="image3"></div>
-              
-                          <div class="card-body">        
-                            <p class="card-text"> <div id="text3"></div> </p>
-                          </div>
-                          <div class="btn-group">
-                            <button type="button" class="btn btn-sm btn-outline-success" onclick="addToCart(2)">Add to Cart</button>
-                            <button type="button" class="btn btn-sm btn-outline-danger" onclick="removeFromCart(2)">Remove from Cart</button>
-                            <button type="button" class="btn btn-primary">Total: </button>
-                          </div>
+                        <div class="collapse show" id="card3">
+                            <div class="card shadow-sm">
+                                <!-- <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> -->
+                                <div id="image3"></div>
+                    
+                                <div class="card-body">        
+                                  <p class="card-text"> <div id="text3"></div> </p>
+                                </div>
+                                <div class="btn-group">
+                                  <button type="button" class="btn btn-sm btn-outline-success" onclick="addToCart(2)">Add to Cart</button>
+                                  <button type="button" class="btn btn-sm btn-outline-danger" onclick="removeFromCart(2)">Remove from Cart</button>
+                                  <button type="button" class="btn btn-primary">Total: </button>
+                                </div>
+                            </div>
                         </div>
+                        
                       </div>
               
                       <div class="col">
-                        <div class="card shadow-sm">
-                          <!-- <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> -->
-                          <div id="image4"></div>
-              
-                          <div class="card-body">        
-                            <p class="card-text"> <div id="text4"></div> </p>
-                          </div>
-                          <div class="btn-group">
-                            <button type="button" class="btn btn-sm btn-outline-success" onclick="addToCart(3)">Add to Cart</button>
-                            <button type="button" class="btn btn-sm btn-outline-danger" onclick="removeFromCart(3)">Remove from Cart</button>
-                            <button type="button" class="btn btn-primary">Total: </button>
-                          </div>
+                        <div class="collapse show" id="card4">
+                            <div class="card shadow-sm">
+                                <!-- <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> -->
+                                <div id="image4"></div>
+                    
+                                <div class="card-body">        
+                                  <p class="card-text"> <div id="text4"></div> </p>
+                                </div>
+                                <div class="btn-group">
+                                  <button type="button" class="btn btn-sm btn-outline-success" onclick="addToCart(3)">Add to Cart</button>
+                                  <button type="button" class="btn btn-sm btn-outline-danger" onclick="removeFromCart(3)">Remove from Cart</button>
+                                  <button type="button" class="btn btn-primary">Total: </button>
+                                </div>
+                            </div>
                         </div>
-                      </div>
-                      <div class="col">
-                        <div class="card shadow-sm">
-                          <!-- <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> -->
-                          <div id="image5"></div>
-              
-                          <div class="card-body">        
-                            <p class="card-text"> <div id="text5"></div> </p>
-                          </div>
-                          <div class="btn-group">
-                            <button type="button" class="btn btn-sm btn-outline-success" onclick="addToCart(4)">Add to Cart</button>
-                            <button type="button" class="btn btn-sm btn-outline-danger" onclick="removeFromCart(4)">Remove from Cart</button>
-                            <button type="button" class="btn btn-primary">Total: </button>
-                          </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="collapse show" id="card5">
+                            <div class="card shadow-sm">
+                                <!-- <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> -->
+                                <div id="image5"></div>
+                    
+                                <div class="card-body">        
+                                  <p class="card-text"> <div id="text5"></div> </p>
+                                </div>
+                                <div class="btn-group">
+                                  <button type="button" class="btn btn-sm btn-outline-success" onclick="addToCart(4)">Add to Cart</button>
+                                  <button type="button" class="btn btn-sm btn-outline-danger" onclick="removeFromCart(4)">Remove from Cart</button>
+                                  <button type="button" class="btn btn-primary">Total: </button>
+                                </div>
+                            </div>
                         </div>
-                      </div>
-                      <div class="col">
-                        <div class="card shadow-sm">
-                          <!-- <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> -->
-                          <div id="image6"></div>
-              
-                          <div class="card-body">        
-                            <p class="card-text"> <div id="text6"></div> </p>
-                          </div>
-                          <div class="btn-group">
-                            <button type="button" class="btn btn-sm btn-outline-success" onclick="addToCart(5)">Add to Cart</button>
-                            <button type="button" class="btn btn-sm btn-outline-danger" onclick="removeFromCart(5)">Remove from Cart</button>
-                            <button type="button" class="btn btn-primary">Total: </button>
-                          </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="collapse show" id="card6">
+                            <div class="card shadow-sm">
+                                <!-- <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> -->
+                                <div id="image6"></div>
+                    
+                                <div class="card-body">        
+                                  <p class="card-text"> <div id="text6"></div> </p>
+                                </div>
+                                <div class="btn-group">
+                                  <button type="button" class="btn btn-sm btn-outline-success" onclick="addToCart(5)">Add to Cart</button>
+                                  <button type="button" class="btn btn-sm btn-outline-danger" onclick="removeFromCart(5)">Remove from Cart</button>
+                                  <button type="button" class="btn btn-primary">Total: </button>
+                                </div>
+                            </div>
                         </div>
                       </div>
                     </div>

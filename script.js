@@ -34,3 +34,82 @@ function uploadBalls(data) {
         imageContainer.appendChild(imgDiv);
     }
 }
+
+function goToCheckout() {
+    $('#store').collapse('hide');
+    $('#confirmation').collapse('hide');
+    $('#cart').collapse('show');
+    console.log("went to cart");
+}
+
+function goToStore() {
+    $('#cart').collapse('hide');
+    $('#confirmation').collapse('hide');
+    $('#store').collapse('show');
+    console.log("went to store");
+}
+
+function goToConfirmation() {
+    $('#cart').collapse('hide');
+    $('#store').collapse('hide');
+    $('#confirmation').collapse('show');
+    console.log("went to confirmation");
+}
+
+// use productId to reference each part of the array
+// number of each product in cart
+let cart = [0,0,0,0,0,0];
+
+function addToCart(id) {
+    if(id < cart.length){
+        cart[id] += 1;
+        console.log("Product: " + id + " added to cart.");
+    } else {
+        console.log("Product: " + id + " could not be added to cart.");
+    }
+    
+}
+
+function removeFromCart(id) {
+    if(cart[id] > 0){
+        cart[id] -= 1;
+        console.log("Product: " + id + " removed from cart.");
+    } else {
+        console.log("Product: " + id + " could not be removed from cart.");
+    }
+}
+
+function resetCart() {
+    for(let i = 0; i < cart.length; i++){
+        cart[i] = 0;
+    }
+    console.log("Cart has been reset.");
+}
+
+function search() {
+    let productName = document.forms["search_form"]["search_input"];
+    let inputProductName = productName.value;
+    console.log("searching");
+
+    fetch("./products.json")
+        .then(response => response.json())
+        .then(balls => loadResults(balls));
+
+    function loadResults(data) {
+        for (var i = 1; i <= 6; ++i) {
+            if(inputProductName !== data.products[i-1].title){
+                
+                $('#card'+i).collapse('hide');
+                console.log("Hide");
+            } else {
+                $('#card'+i).collapse('show');
+                console.log("Show");
+            }
+            
+            
+    
+        }
+    }
+    
+    console.log("done searching");
+}

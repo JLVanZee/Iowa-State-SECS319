@@ -64,16 +64,17 @@ function addToCart(id) {
     if(id < cart.length){
         cart[id] += 1;
         console.log("Product: " + id + " added to cart.");
+        updateProductCount(id, cart[id]);
     } else {
         console.log("Product: " + id + " could not be added to cart.");
     }
-    
 }
 
 function removeFromCart(id) {
     if(cart[id] > 0){
         cart[id] -= 1;
         console.log("Product: " + id + " removed from cart.");
+        updateProductCount(id, cart[id]);
     } else {
         console.log("Product: " + id + " could not be removed from cart.");
     }
@@ -82,8 +83,13 @@ function removeFromCart(id) {
 function resetCart() {
     for(let i = 0; i < cart.length; i++){
         cart[i] = 0;
+        updateProductCount(i, 0);
     }
     console.log("Cart has been reset.");
+}
+
+function updateProductCount(id, newValue) {
+    document.getElementById("num"+id).innerHTML = "Total: " + newValue;
 }
 
 function search() {

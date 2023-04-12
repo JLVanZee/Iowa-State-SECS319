@@ -36,6 +36,7 @@ function uploadBalls(data) {
 }
 
 function goToCheckout() {
+    clear_invalidPaymentWarning();
     $('#store').collapse('hide');
     $('#confirmation').collapse('hide');
     $('#cart').collapse('show');
@@ -52,10 +53,12 @@ function goToStore() {
 function goToConfirmation() {
 
     if(!paymentInfoCheck()) {
-        //document.getElementById("invalidForm") = "<b>Please Enter Information for All required fields</b>"
+        document.getElementById("invalidForm").innerHTML = "<b>Please Enter Information for All required fields<b>";
         console.log("Payment Info not Sufficient");
         return;
     };
+
+    clear_invalidPaymentWarning();
     $('#cart').collapse('hide');
     $('#store').collapse('hide');
     $('#confirmation').collapse('show');
@@ -157,6 +160,6 @@ function paymentInfoCheck() {
     return true;
 }
 
-function invalidFormFeedBack() {
-
+function clear_invalidPaymentWarning() {
+    document.getElementById("invalidForm").innerHTML = "";
 }

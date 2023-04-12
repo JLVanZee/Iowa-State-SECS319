@@ -40,6 +40,7 @@ function goToCheckout() {
     $('#store').collapse('hide');
     $('#confirmation').collapse('hide');
     $('#cart').collapse('show');
+    buildCart();
     console.log("went to cart");
 }
 
@@ -128,6 +129,84 @@ function search() {
     
     console.log("done searching");
 }
+
+function buildCart() {
+    console.log("entered build cart");
+    //resets the cart to rebuild it, necessary when cart has already been built at least once
+    document.getElementById("cartDisplay").innerHTML = "";
+    document.getElementById("totalDisplay").innerHTML = "";
+    console.log("reset cart page");
+       
+    fetch("./products.json")
+        .then(response => response.json())
+        .then(items => displayCart(items));
+
+    function displayCart(items) {
+        let shopContainer = document.getElementById("cartDisplay");
+        let costContainer = document.getElementById("totalDisplay");
+        let cartTotal = 0;
+        
+        for(var i = 0; i < cart.length; ++i) {
+            if (cart[i] == 0) {
+                continue;
+            }
+
+            let title = items.products[i].title;
+            let price = items.products[i].price;
+            let img = items.products[i].image;
+            
+            let div = document.createElement("div");
+            let subtotal = getTotal(price, i);
+            cartTotal = ((cartTotal * 100) + (subtotal * 100)) / 100.0;
+            cartTotal = cartTotal.toFixed(2);
+            
+            
+            div.innerHTML = `
+                <div class="row border-top border-bottom">
+                    <div class="row main align-items-center">
+                        <div class="col-2"><img class="img-fluid" src=${img} width="100px"></div>
+                        <div class="col">
+                            <div class="row">${title}</div>
+                        </div>
+                        <div class="col">
+                            <a>In Cart: ${cart[i]}</a>
+                        </div>
+                        <div class="col">Sub Total: $${subtotal}</div>
+                    </div>
+                </div>
+            `
+            shopContainer.appendChild(div);
+        }
+        let costDisplay = document.createElement("div");
+        let tax = cartTotal * 0.07;
+        tax = tax.toFixed(2);
+        let finalPrice = parseFloat(cartTotal) + parseFloat(tax);
+        finalPrice = finalPrice.toFixed(2);
+        
+        
+        costDisplay.innerHTML = `
+            <p>Cart Total: $${cartTotal}<p>
+            <p>Sales Tax (7%): $${tax}<p>
+            <p><b>Total: $${finalPrice}</b><p>
+        `
+        costContainer.appendChild(costDisplay)
+
+    }
+    console.log("Cart Built");
+}
+
+function getTotal(price, cartID) {
+    if (cart[cartID] == 0) {
+        return 0;
+    }
+    
+    let cents = price * 100;
+    cents *= cart[cartID];
+    let finalPrice = cents / 100.0;
+    return finalPrice.toFixed(2);
+}
+
+
 
 
 (() => {

@@ -52,6 +52,7 @@ function goToStore() {
 function goToConfirmation() {
 
     if(!paymentInfoCheck()) {
+        //document.getElementById("invalidForm") = "<b>Please Enter Information for All required fields</b>"
         console.log("Payment Info not Sufficient");
         return;
     };
@@ -154,4 +155,8 @@ function paymentInfoCheck() {
         }
     }
     return true;
+}
+
+function invalidFormFeedBack() {
+
 }

@@ -119,3 +119,24 @@ function search() {
     
     console.log("done searching");
 }
+
+function buildCart() {
+
+    //resets the cart to rebuild it, necessary when cart has already been built at least once
+    document.getElementById("cartDisplay").innerHTML = "";
+    
+    fetch("./products.json")
+        .then(response => response.json())
+        .then(items => displayCart(items));
+
+
+    function displayCart(items) {
+        for(var i = 0; i < cart.length; ++i) {
+            if (cart[i] == 0) {
+                continue;
+            }
+            //items.products[i].title;
+
+        }
+    }
+}

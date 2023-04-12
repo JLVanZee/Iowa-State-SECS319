@@ -36,6 +36,7 @@ function uploadBalls(data) {
 }
 
 function goToCheckout() {
+    clear_invalidPaymentWarning();
     $('#store').collapse('hide');
     $('#confirmation').collapse('hide');
     $('#cart').collapse('show');
@@ -50,6 +51,14 @@ function goToStore() {
 }
 
 function goToConfirmation() {
+
+    if(!paymentInfoCheck()) {
+        document.getElementById("invalidForm").innerHTML = "<b>Please Enter Information for All required fields<b>";
+        console.log("Payment Info not Sufficient");
+        return;
+    };
+
+    clear_invalidPaymentWarning();
     $('#cart').collapse('hide');
     $('#store').collapse('hide');
     $('#confirmation').collapse('show');
@@ -119,24 +128,44 @@ function search() {
     
     console.log("done searching");
 }
-/**
- * This function will check the cart[] array and build with a basic template for each 
- * of the products. It skips over a product if the cart array has a "0" at that index.
- * This function will be called in the goToStore() function I, meaning that it will be updated
- * whenever the user chooses to bring up the store. This function may be decided to also be called
- * in the confirmation page if needed.
- * 
- * ISSUES TO BE WORKED OUT
- * I am unsure how to create an accessible array of the data from the json file, which will 
- * be used to get the information needed for each cart item
- */
-function buildCart() {
-    fetch("./products.json")
-        .then(response => response.json())
-        .then(items => loadResults(items));
 
 
-    function displayCart(items) {
-        
+(() => {
+    'use strict'
+  
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    const forms = document.querySelectorAll('.needs-validation')
+  
+    // Loop over them and prevent submission
+    Array.from(forms).forEach(form => {
+      form.addEventListener('submit', event => {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+  
+        form.classList.add('was-validated')
+      }, false)
+    })
+  })()
+
+function paymentInfoCheck() {
+    fields = ["firstName", "lastName", "address", "country", "state", "zip", "cccardName", "ccnumber", "ccexpiration", "cccvv"];
+
+
+    //let confirmation = document.forms["paymentValidation"][""];
+
+    var i, l = fields.length;
+    var fieldname;
+    for (i = 0; i < l; i++) {
+        fieldname = fields[i];
+        if (document.forms["paymentValidation"][fieldname].value === "") {
+            return false;
+        }
     }
+    return true;
+}
+
+function clear_invalidPaymentWarning() {
+    document.getElementById("invalidForm").innerHTML = "";
 }

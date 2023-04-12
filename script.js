@@ -39,6 +39,7 @@ function goToCheckout() {
     $('#store').collapse('hide');
     $('#confirmation').collapse('hide');
     $('#cart').collapse('show');
+    buildCart();
     console.log("went to cart");
 }
 
@@ -121,22 +122,65 @@ function search() {
 }
 
 function buildCart() {
-
+    console.log("entered build cart");
     //resets the cart to rebuild it, necessary when cart has already been built at least once
     document.getElementById("cartDisplay").innerHTML = "";
-    
+    console.log("reset cart page");
+       
     fetch("./products.json")
         .then(response => response.json())
         .then(items => displayCart(items));
 
-
     function displayCart(items) {
+        let shopContainer = document.getElementById("cartDisplay");
+        let finalPrice = 0;
+        
         for(var i = 0; i < cart.length; ++i) {
             if (cart[i] == 0) {
                 continue;
             }
-            //items.products[i].title;
 
+            let title = items.products[i].title;
+            let price = items.products[i].price;
+            let img = items.products[i].image;
+            
+            let div = document.createElement("div");
+            let subtotal = getTotal(price, i);
+            finalPrice = ((finalPrice * 100) + (subtotal * 100)) / 100.0;
+            finalPrice.toFixed(2);
+            
+            
+            div.innerHTML = `
+                <div class="row border-top border-bottom">
+                    <div class="row main align-items-center">
+                        <div class="col-2"><img class="img-fluid" src=${img}></div>
+                        <div class="col">
+                            <div class="row">${title}</div>
+                        </div>
+                        <div class="col">
+                            <a>In Cart: ${cart[i]}</a>
+                        </div>
+                        <div class="col">Sub Total: $${subtotal}</div>
+                    </div>
+                </div>
+            `
+            shopContainer.appendChild(div);
         }
+
+        
+
     }
+    console.log("Cart Built");
 }
+
+function getTotal(price, cartID) {
+    if (cart[cartID] == 0) {
+        return 0;
+    }
+    
+    let cents = price * 100;
+    cents *= cart[cartID];
+    let finalPrice = cents / 100.0;
+    return finalPrice.toFixed(2);
+}
+

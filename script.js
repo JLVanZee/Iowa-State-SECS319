@@ -50,6 +50,11 @@ function goToStore() {
 }
 
 function goToConfirmation() {
+
+    if(!paymentInfoCheck()) {
+        console.log("Payment Info not Sufficient");
+        return;
+    };
     $('#cart').collapse('hide');
     $('#store').collapse('hide');
     $('#confirmation').collapse('show');
@@ -133,3 +138,20 @@ function search() {
       }, false)
     })
   })()
+
+function paymentInfoCheck() {
+    fields = ["firstName", "lastName", "address", "country", "state", "zip", "cccardName", "ccnumber", "ccexpiration", "cccvv"];
+
+
+    //let confirmation = document.forms["paymentValidation"][""];
+
+    var i, l = fields.length;
+    var fieldname;
+    for (i = 0; i < l; i++) {
+        fieldname = fields[i];
+        if (document.forms["paymentValidation"][fieldname].value === "") {
+            return false;
+        }
+    }
+    return true;
+}

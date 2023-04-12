@@ -119,3 +119,24 @@ function search() {
     
     console.log("done searching");
 }
+/**
+ * This function will check the cart[] array and build with a basic template for each 
+ * of the products. It skips over a product if the cart array has a "0" at that index.
+ * This function will be called in the goToStore() function I, meaning that it will be updated
+ * whenever the user chooses to bring up the store. This function may be decided to also be called
+ * in the confirmation page if needed.
+ * 
+ * ISSUES TO BE WORKED OUT
+ * I am unsure how to create an accessible array of the data from the json file, which will 
+ * be used to get the information needed for each cart item
+ */
+function buildCart() {
+    fetch("./products.json")
+        .then(response => response.json())
+        .then(items => loadResults(items));
+
+
+    function displayCart(items) {
+        
+    }
+}

@@ -53,17 +53,24 @@ function goToStore() {
 
 function goToConfirmation() {
 
-    if(!paymentInfoCheck()) {
-        document.getElementById("invalidForm").innerHTML = "<b>Please Enter Information for All required fields<b>";
-        console.log("Payment Info not Sufficient");
-        return;
-    };
+    // if(!paymentInfoCheck()) {
+    //     document.getElementById("invalidForm").innerHTML = "<b>Please Enter Information for All required fields<b>";
+    //     console.log("Payment Info not Sufficient");
+    //     return;
+    // };
 
     clear_invalidPaymentWarning();
+    
     $('#cart').collapse('hide');
     $('#store').collapse('hide');
     $('#confirmation').collapse('show');
     console.log("went to confirmation");
+    resetConfirmations();
+    
+    confirmCart();
+    confirmBillingInfo();
+    confirmPayment()
+    
 }
 
 // use productId to reference each part of the array
@@ -99,7 +106,7 @@ function resetCart() {
 }
 
 function updateProductCount(id, newValue) {
-    document.getElementById("num"+id).innerHTML = "Total: " + newValue;
+    document.getElementById("num"+id).innerHTML = "In Cart: " + newValue;
 }
 
 function search() {
@@ -247,4 +254,106 @@ function paymentInfoCheck() {
 
 function clear_invalidPaymentWarning() {
     document.getElementById("invalidForm").innerHTML = "";
+}
+
+function confirmCart() {
+    console.log("entered build cart");
+    //resets the cart to rebuild it, necessary when cart has already been built at least once
+    document.getElementById("cartDisplay").innerHTML = "";
+    document.getElementById("totalDisplay").innerHTML = "";
+    console.log("reset cart page");
+       
+    fetch("./products.json")
+        .then(response => response.json())
+        .then(items => displayCart(items));
+
+    function displayCart(items) {
+        let shopContainer = document.getElementById("confirmCart");
+        let costContainer = document.getElementById("confirmCost");
+        let cartTotal = 0;
+        
+        for(var i = 0; i < cart.length; ++i) {
+            if (cart[i] == 0) {
+                continue;
+            }
+
+            let title = items.products[i].title;
+            let price = items.products[i].price;
+            let img = items.products[i].image;
+            
+            let div = document.createElement("div");
+            let subtotal = getTotal(price, i);
+            cartTotal = ((cartTotal * 100) + (subtotal * 100)) / 100.0;
+            cartTotal = cartTotal.toFixed(2);
+            
+            
+            div.innerHTML = `
+                <div class="row border-top border-bottom">
+                    <div class="row main align-items-center">
+                        <div class="col-2"><img class="img-fluid" src=${img} width="100px"></div>
+                        <div class="col">
+                            <div class="row">${title}</div>
+                        </div>
+                        <div class="col">
+                            <a>In Cart: ${cart[i]}</a>
+                        </div>
+                        <div class="col">Sub Total: $${subtotal}</div>
+                    </div>
+                </div>
+            `
+            shopContainer.appendChild(div);
+        }
+        let costDisplay = document.createElement("div");
+        let tax = cartTotal * 0.07;
+        tax = tax.toFixed(2);
+        let finalPrice = parseFloat(cartTotal) + parseFloat(tax);
+        finalPrice = finalPrice.toFixed(2);
+        
+        
+        costDisplay.innerHTML = `
+            <p>Cart Total: $${cartTotal}<p>
+            <p>Sales Tax (7%): $${tax}<p>
+            <p><b>Total: $${finalPrice}</b><p>
+        `
+        costContainer.appendChild(costDisplay)
+    }
+}
+
+function confirmBillingInfo() {
+    let name = document.forms["paymentValidation"]["firstName"].value + " " + document.forms["paymentValidation"]["lastName"].value
+    let address = document.forms["paymentValidation"]["address"].value;
+    let state = document.forms["paymentValidation"]["state"].value;
+    let zip = document.forms["paymentValidation"]["zip"].value;
+
+    let infoContainer = document.getElementById("confirmBillingInfo");
+    let div = document.createElement("div");
+
+    div.innerHTML = `
+        <p>Name: ${name}</p>
+        <p>Address: ${address}, ${state}, ${zip}</p>
+    `
+
+    infoContainer.appendChild(div);
+}
+
+function confirmPayment() {
+    let ccNum = document.forms["paymentValidation"]["ccnumber"].value;
+    ccNum = ccNum.substr(-4);
+    ccNum = "*************" + ccNum.toString();
+
+    let cardContainer = document.getElementById("confirmPayment");
+    let div = document.createElement("div");
+    div.innerHTML = `<p>Card Info: ${ccNum}</p>`
+    cardContainer.appendChild(div);
+}
+
+function resetConfirmations() {
+    document.getElementById("confirmCart").innerHTML = "";
+    document.getElementById("confirmCost").innerHTML = "";
+    document.getElementById("confirmBillingInfo").innerHTML = "";
+    document.getElementById("confirmPayment").innerHTML = "";
+}
+
+function refresh() {
+    location.reload();
 }

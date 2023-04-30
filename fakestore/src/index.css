@@ -11,3 +11,32 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+ul {
+  overflow: hidden;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  background-color: #333;
+}
+
+li {
+  display: inline;
+  float: left;
+}
+
+li button { 
+  display: block;
+  padding: 8px 16px;
+  color: whitesmoke;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  background-color: #333;
+}
+
+li button:hover {
+  background-color: #111;
+}
+
+

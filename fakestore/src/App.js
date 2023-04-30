@@ -1,6 +1,12 @@
 import logo from './logo.svg';
 import './App.css';
 import {useState, useEffect} from 'react';
+// import { 
+//   BrowserRouter, 
+//   Route, 
+//   Routes, 
+//   Link
+// } from "react-router-dom";
 
 function App() {
   const [product, setProduct] = useState([]);
@@ -37,7 +43,8 @@ function App() {
       console.log(data);
       setProduct(data);
     });
-    setViewer1(!viewer1);
+    setViewer1(true);
+    setViewer2(false);
   }
 
   function getOneProduct(id) {
@@ -52,29 +59,84 @@ function App() {
         dataArr.push(data);
         setOneProduct(dataArr);
       });
-      setViewer2(!viewer2);
+      setViewer1(false);
+      setViewer2(true);
     } else {
       console.log("Wrong number of Product id.");
     }
   }
 
   return (
-    <div>
-      <h1>Catalog of Products</h1>
-      <button onClick={() => getAllProducts()}>Show All products</button>
-      <input type="text" id="message" name="message" placeholder="id" onChange={(e) => getOneProduct(e.target.value)} />
 
-      <h1>Show all available Products.</h1>
-      <hr></hr>
+    <div>
+      <div>
+      <nav>
+        <ul>
+           <li>
+              <button onClick={() => getAllProducts()}>Read</button>
+           </li>
+           <li>
+              <button onClick={() => getOneProduct(0)}>Create</button>
+           </li>
+           <li>
+              <button >Update</button>
+           </li>
+           <li>
+              <button >Delete</button>
+           </li>
+           <li>
+              <button >Credits</button>
+           </li>
+        </ul>
+     </nav>
+      </div>
+      <h1>Catalog of Products</h1>
+      
+
+     
       {viewer1 && <div>Products {showAllItems}</div>}
-      <hr></hr>
-      <h1>Show one Product by ID:</h1>
       {viewer2 && <div>Product: {showOneItem}</div>}
     </div>
+
+    // <BrowserRouter>
+    //     
+    //     <Routes>
+    //       <Route path="/" element={<Read />} />
+    //       <Route path="/create" element={<Create />} />
+    //       <Route path="/update" element={<Update />} />
+    //       <Route path="/delete" element={<Delete />} />
+    //       <Route path="/credits" element={<Credits />} />
+    //       <Route path="*" element={<NotFound />} />
+    //     </Routes>
+        
+    // </BrowserRouter> 
   );
 }
 
+// function Read() {
+//   return <h1>Read</h1>
+// }
 
+// function Create() {
+//   return <h1>Create</h1>;
+// }
+
+// function Update() {
+//   return <h1>Update</h1>;
+// }
+
+// function Delete() {
+//   return <h1>Delete</h1>;
+// }
+
+// function Credits() {
+//   return <h1>Credits</h1>;
+// }
+
+
+// function NotFound() {
+//   return <h1>Not Found</h1>;
+// }
 
 
 export default App;

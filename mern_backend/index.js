@@ -6,7 +6,6 @@ const cors = require("cors");
 const app = express();
 const Product = require("./dataSchema.js");
 
-
 app.use(express.json());
 app.use(cors());
 
@@ -43,7 +42,6 @@ app.post("/insert", async (req, res) => {
     const pcount = req.body.rating.count;
     
     try {
-        // await formData.save();
         await Product.create(formData);
         const messageResponse = { message: `Product ${p_id} added correctly` };
         res.send(JSON.stringify(messageResponse));

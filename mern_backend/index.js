@@ -34,6 +34,13 @@ app.get("/:id", async (req, resp) => {
     resp.send(oneProduct);
 });
 
+app.get("/", async (req, resp) => {
+    const query = {};
+    const allProducts = await Product.find(query);
+    console.log(allProducts);
+    resp.send(allProducts);
+});
+
 app.post("/insert", async (req, res) => {
     console.log(req.body);
     const p_id = req.body._id;

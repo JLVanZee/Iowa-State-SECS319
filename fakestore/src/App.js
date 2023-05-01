@@ -51,7 +51,7 @@ function App() {
   ));
 
   function getAllProducts() {
-    fetch("http://localhost:27017/")
+    fetch("http://localhost:4000/")
     .then((response) => response.json())
     .then((data) => {
       console.log("Show Catalog of Products :");
@@ -65,7 +65,7 @@ function App() {
   function getOneProduct(id) {
     console.log(id);
     if (id >= 1 && id <= 20) {
-      fetch("http://localhost:27017/" + id)
+      fetch("http://localhost:4000/" + id)
       .then((response) => response.json())
       .then((data) => {
         console.log("Show one product :", id);

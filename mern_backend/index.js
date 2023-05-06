@@ -76,37 +76,21 @@ app.delete("/delete", async (req, res) => {
         const query = { _id: req.body._id };
         await Product.deleteOne(query);
         const messageResponse = {
-        message: `Product ${req.body._id} deleted correctly`,
-    };
+            message: `Product ${req.body._id} deleted correctly`,
+        };
         res.send(JSON.stringify(messageResponse));
     } catch (err) {
         console.log("Error while deleting :" + p_id + " " + err);
     }
 });
 
-app.post("/update", async (req, res) => {
-    console.log(req.body);
-    const p_id = req.body._id;
-    const ptitle = req.body.title;
-    const pprice = req.body.price;
-    const pdescription = req.body.description;
-    const pcategory = req.body.category;
-    const pimage = req.body.image;
-    const prate = req.body.rating.rate;
-    const pcount = req.body.rating.count;
+app.put("/update", async (req, res) => {
+    console.log("Update :", req.body);
 
-    const formData = new Product({
-        _id: p_id,
-        title: ptitle,
-        price: pprice,
-        description: pdescription,
-        category: pcategory,
-        image: pimage,
-        rating: { rate: prate, count: pcount },
-    });
+    
     try {
         // await formData.save();
-        await Product.updateOne(formData);
+        await Product.updateOne({ "_id": req.body._id}, { $set: {"price": req.body.price}});
         const messageResponse = { message: `Product ${p_id} updated correctly` };
         res.send(JSON.stringify(messageResponse));
     } catch (err) {

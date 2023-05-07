@@ -86,3 +86,26 @@ p {
   max-width: 200px;
   max-height: 200px;
 }
+
+#Products div button {
+  float: right;
+  width: 100px;
+  height: 80px;
+  padding: 5px;
+  gap: 10px;
+}
+
+#add {
+  background-color: #34eb5e;
+  border-width: 0.5px;
+  
+}
+
+#remove {
+  background-color: #eb3446;
+  border-width: 0.5px;
+}
+
+#Products div button:hover {
+  background-color: whitesmoke;
+}

@@ -27,6 +27,8 @@ function App() {
 
   const [viewer5, setViewer5] = useState(false);
 
+  const [cart, setCart] = useState([]);
+
   useEffect(() => {
     fetch("http://localhost:4000/")
     .then((response) => response.json())
@@ -194,16 +196,26 @@ function App() {
     setNewPrice({...newPrice, price: value});
     
   }
+
+  function addOneProduct(id){
+    console.log("Product added with id: ", id);
+  }
+
+  function removeOneProduct(id){
+    console.log("Product removed with id: ", id);
+  }
     
 
   const showAllItems = product.map((el) => (
-    <div id={el._id}>
+    <div id={el._id} key={el._id}>
       <img src={el.image} /> <br />
       <h2>Title: {el.title}</h2> <br />
       Category: {el.category} <br />
       Price: ${el.price} <br />
       Rate: {el.rating.rate}  <br />
       Number of Reviews: {el.rating.count} <br />
+      <button id="add" onClick={() => addOneProduct(el._id)} >+</button>
+      <button id="remove" onClick={() => removeOneProduct(el._id)}>-</button>
     </div>
   ));
 

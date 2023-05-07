@@ -213,8 +213,8 @@ function App() {
   const removeOneProduct = (el) => {
     
     let hardCopy = [...cart];
-    let id = hardCopy.find((cartItem) => cartItem !== el._id);
-    hardCopy = hardCopy.filter((cartItem) => cartItem._id !== id);
+    let item = hardCopy.find((cartItem) => cartItem !== el._id);
+    hardCopy = hardCopy.filter((cartItem) => cartItem != item);
     setCart(hardCopy);
   };
 

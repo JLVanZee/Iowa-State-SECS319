@@ -102,7 +102,15 @@ function App() {
     setViewer5(true);
   }
 
-  function getCart(){}
+  function getCart(){
+    console.log("Cart: ", cart);
+    console.log("Total: ", cartTotal);
+    setViewer1(false);
+    setViewer2(true);
+    setViewer3(false);
+    setViewer4(false);
+    setViewer5(false);
+  }
 
   function handleChange(evt) {
     const value = evt.target.value;
@@ -197,13 +205,31 @@ function App() {
     
   }
 
-  function addOneProduct(id){
-    console.log("Product added with id: ", id);
+  const addOneProduct = (el) => {
+    console.log("Product added with id: ", el._id);
+    setCart([...cart, el]);
   }
 
-  function removeOneProduct(id){
-    console.log("Product removed with id: ", id);
-  }
+  const removeOneProduct = (el) => {
+    
+    let hardCopy = [...cart];
+    let id = hardCopy.find((cartItem) => cartItem !== el._id);
+    hardCopy = hardCopy.filter((cartItem) => cartItem._id !== id);
+    setCart(hardCopy);
+  };
+
+  const [cartTotal, setCartTotal] = useState(0);
+  useEffect(() => {
+    total();
+  }, [cart]);
+
+  const total = () => {
+    let totalVal = 0;
+    for (let i = 0; i < cart.length; i++) {
+      totalVal += cart[i].price;
+    }
+    setCartTotal(totalVal);
+  };
     
 
   const showAllItems = product.map((el) => (
@@ -214,8 +240,8 @@ function App() {
       Price: ${el.price} <br />
       Rate: {el.rating.rate}  <br />
       Number of Reviews: {el.rating.count} <br />
-      <button id="add" onClick={() => addOneProduct(el._id)} >+</button>
-      <button id="remove" onClick={() => removeOneProduct(el._id)}>-</button>
+      <button id="add" onClick={() => addOneProduct(el)} >Add</button>
+      <button id="remove" onClick={() => removeOneProduct(el)}>Remove</button>
     </div>
   ));
 
@@ -228,6 +254,18 @@ function App() {
       Rate :{el.rating.rate} and Count:{el.rating.count} <br />
     </div>
   ));
+
+  const showCartItems = cart.map((el) => (
+    <div id={el._id} key={el._id}>
+      <img src={el.image} /> <br />
+      <h2>Title: {el.title}</h2> <br />
+      Category: {el.category} <br />
+      Price: ${el.price} <br />
+      Rate: {el.rating.rate}  <br />
+      Number of Reviews: {el.rating.count} <br />
+      <button id="remove" onClick={() => removeOneProduct(el)}>Remove</button>
+    </div>
+  ))
 
     
 
@@ -264,11 +302,11 @@ function App() {
             </div>
           </div>}
           {viewer2 && <div>          
-            <h3>Enter id of one product to Update:</h3>
-            <input type="text" id="message" name="message" placeholder="id" onChange={(e) => getOneProduct(e.target.value)} />
-            {showOneItem}
-            <input type="text" id="price" name="price" placeholder="price" onChange={handleUpdateChange} />
-            <button onClick={updateOneProduct}>Update</button>
+            <h3>Cart</h3>
+            <div id="Products">
+              {showCartItems}
+            </div>
+            
           
           </div>}
           {viewer3 && <div> 

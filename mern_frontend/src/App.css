@@ -51,6 +51,14 @@ p {
   text-align: center;
 }
 
+#ConfirmTitle {
+  text-align:center;
+}
+
+#checkoutForm {
+  padding-left: 50px;
+}
+
 #Products {
   display: flex;
   /* grid-template-columns: 1fr;
@@ -72,6 +80,27 @@ p {
   align-items: start; */
   gap: 10px;
  flex-direction: column;
+}
+
+#checkoutLabel {
+  float: left;
+  font-size: 24px;
+  padding-right: 5px;
+}
+
+.checkoutInput {
+  width: 200px;
+  font-size: 24px;
+  border-color:black;
+  border-radius: 5px;
+}
+
+#labelSeparation {
+  padding-bottom: 20px;
+}
+
+#orderButton {
+  font-size: 24px;
 }
 
 #Products div {

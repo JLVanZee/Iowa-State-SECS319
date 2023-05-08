@@ -29,6 +29,8 @@ function App() {
 
   const [cart, setCart] = useState([]);
 
+  const [viewer6, setViewer6] = useState(false);
+
   useEffect(() => {
     fetch("http://localhost:4000/")
     .then((response) => response.json())
@@ -50,6 +52,7 @@ function App() {
     setViewer3(false);
     setViewer4(false);
     setViewer5(false);
+    setViewer6(false);
   }
 
   function getOneProduct(id) {
@@ -76,6 +79,7 @@ function App() {
     setViewer3(false);
     setViewer4(false);
     setViewer5(false);
+    setViewer6(false);
   }
 
   function addProduct() {
@@ -84,6 +88,7 @@ function App() {
     setViewer3(true);
     setViewer4(false);
     setViewer5(false);
+    setViewer6(false);
   }
 
   function deleteProduct(){
@@ -92,6 +97,7 @@ function App() {
     setViewer3(false);
     setViewer4(true);
     setViewer5(false);
+    setViewer6(false);
   }
 
   function showCredits(){
@@ -100,6 +106,7 @@ function App() {
     setViewer3(false);
     setViewer4(false);
     setViewer5(true);
+    setViewer6(false);
   }
 
   function getCart(){
@@ -110,6 +117,35 @@ function App() {
     setViewer3(false);
     setViewer4(false);
     setViewer5(false);
+    setViewer6(false);
+  }
+
+  function getCheckout() {
+    setViewer1(false);
+    setViewer2(false);
+    setViewer3(false);
+    setViewer4(false);
+    setViewer5(false);
+    setViewer6(true);
+  }
+
+  function confirmOrder() {
+    let fields = ["firstname", "lastname", "creditcard", "expiration", "cvv"];
+
+    for (let i = 0; i < fields.length; ++i) {
+      let fieldName = fields[i];
+      if (document.forms["checkoutForm"][fieldName].value === "") {
+        alert("Please enter information in all the fields");
+        return;
+      }
+    }
+
+    const response = window.confirm("Are you sure you want to place an order?");
+    if (response) {
+      window.location.reload();
+    } else {
+      return;
+    }
   }
 
   function handleChange(evt) {
@@ -281,7 +317,9 @@ function App() {
             <li>
               <button onClick={() => getCart()}>Cart</button>
             </li>
-            
+            <li>
+              <button onClick={() => getCheckout()}>Checkout</button>
+            </li>
             <li>
               <button onClick={() => showCredits()}>Credits</button>
             </li>
@@ -351,10 +389,47 @@ function App() {
             <h3>Professor Name: Dr. Abraham N. Aldaco Gastelum</h3>
             <h3>Authors: Harley Peacher hpeacher@iastate.edu</h3>
             <h3>Jaret Van Zee  jlvanzee@iastate.edu</h3>
-            <p>Jaret and I have worked hard to take what we learned in class and make it our own. 
-              I worked mostly on the front-end and Jaret the back-end. Together we were able to
+            <p>Harley and Jaret have worked hard to take what we learned in class and make it our own. 
+              Harley worked mostly on the front-end and Jaret the back-end. Together we were able to
               create a web interface that could access and update data within MongoDB.</p> 
             </div>}
+
+          {viewer6 && <div>
+            <h1 id="ConfirmTitle">Please enter your payment information and confirm your checkout</h1>
+            
+            <form id="checkoutForm" novalidate>           
+              <div id="labelSeparation">
+                <label id="checkoutLabel" for="firstname" ><b>First Name:  </b></label>
+                <input class="checkoutInput" id="firstname" type="text" placeholder="First" required></input>
+              </div>
+                
+              <div id="labelSeparation">
+                <label id="checkoutLabel" for="lastname" ><b>Last Name:  </b></label>
+                <input class="checkoutInput" id="lastname" type="text" placeholder="Last" required></input>
+              </div>
+
+              <div id="labelSeparation">
+                <label id="checkoutLabel" for="creditcart" ><b>Card Number:  </b></label>
+                <input class="checkoutInput" id="creditcard" type="text" placeholder="0123..." required></input>
+              </div>     
+              
+              <div id="labelSeparation">
+                <label id="checkoutLabel" for="expiration" ><b>Expiration Date:  </b></label>
+                <input class="checkoutInput" id="expiration" type="text" placeholder="Month/Year" required></input>
+              </div>    
+
+              <div id="labelSeparation">
+                <label id="checkoutLabel" for="cvv" ><b>CVV Number:  </b></label>
+                <input class="checkoutInput" id="cvv" type="text" placeholder="123" required></input>
+              </div>    
+
+              <div id="labelSeparation">
+                <button id="orderButton" onClick={() => confirmOrder()}>Order</button>
+              </div>    
+            </form>
+              
+            
+          </div>}
         </div>
       </main>
     </div>
